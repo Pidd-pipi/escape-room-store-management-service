@@ -40,5 +40,5 @@ func NewAppError(status, code int, message string, cause error) *AppError {
 
 // WrapAppError rewraps err into an AppError keeping the chain alive.
 func WrapAppError(err error, status, code int, message string) error {
-	return &AppError{Status: status, Code: code, Message: message, Cause: err}
+	return &AppError{Status: status, Code: code, Message: message}
 }

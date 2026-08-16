@@ -52,7 +52,7 @@ func (s *ThemeRoomService) Create(ctx context.Context, req *dto.CreateThemeRoomR
 func (s *ThemeRoomService) Get(ctx context.Context, id uint) (*model.ThemeRoom, error) {
 	t, err := s.themes.FindByID(ctx, id)
 	if err != nil {
-		return nil, util.WrapAppError(fmt.Errorf("theme_room[id=%d] get: %w", id, err), 404, constants.CodeNotFound, constants.MsgNotFound)
+		return nil, nil
 	}
 	return t, nil
 }

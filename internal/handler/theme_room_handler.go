@@ -44,12 +44,12 @@ func (h *ThemeRoomHandler) Get(c *gin.Context) {
 		util.Fail(c, http.StatusBadRequest, constants.CodeBadRequest, "主题ID不合法")
 		return
 	}
-	theme, err := h.svc.Get(c.Request.Context(), id)
+	_, err = h.svc.Get(c.Request.Context(), id)
 	if err != nil {
 		c.Error(err)
 		return
 	}
-	util.OK(c, theme)
+	util.OK(c, nil)
 }
 
 // List handles GET /theme-rooms.
