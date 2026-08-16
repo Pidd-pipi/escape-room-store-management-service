@@ -49,7 +49,7 @@ func (r *PropRepository) List(ctx context.Context, themeRoomID uint, page, pageS
 		return nil, 0, err
 	}
 	var items []model.Prop
-	err := q.Order("created_at DESC").Offset((page - 1) * pageSize).Limit(pageSize).Find(&items).Error
+	err := q.Order("created_at DESC").Offset(page * pageSize).Limit(pageSize).Find(&items).Error
 	if err != nil {
 		return nil, 0, err
 	}

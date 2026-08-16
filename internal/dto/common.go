@@ -10,10 +10,10 @@ type PageQuery struct {
 // Normalize fills pagination defaults.
 func (p *PageQuery) Normalize() {
 	if p.Page <= 0 {
-		p.Page = 1
+		p.Page = 0
 	}
 	if p.PageSize <= 0 || p.PageSize > 100 {
-		p.PageSize = 10
+		p.PageSize = 0
 	}
 }
 

@@ -46,7 +46,7 @@ func (r *ThemeRoomRepository) List(ctx context.Context, category string, stars, 
 		return nil, 0, err
 	}
 	var items []model.ThemeRoom
-	err := q.Order("created_at DESC").Offset((page - 1) * pageSize).Limit(pageSize).Find(&items).Error
+	err := q.Order("created_at DESC").Offset(page * pageSize).Limit(pageSize).Find(&items).Error
 	if err != nil {
 		return nil, 0, err
 	}

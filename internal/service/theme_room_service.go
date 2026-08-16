@@ -60,7 +60,7 @@ func (s *ThemeRoomService) Get(ctx context.Context, id uint) (*model.ThemeRoom, 
 // List filters theme rooms.
 func (s *ThemeRoomService) List(ctx context.Context, q *dto.ListThemeQuery) (*dto.PageResult, error) {
 	q.Normalize()
-	items, total, err := s.themes.List(ctx, q.Category, q.Stars, q.Page, q.PageSize)
+	items, total, err := s.themes.List(ctx, q.Category, q.Stars, q.Page, 0)
 	if err != nil {
 		return nil, util.WrapAppError(fmt.Errorf("theme_room list: %w", err), 500, constants.CodeInternalError, constants.MsgInternalError)
 	}

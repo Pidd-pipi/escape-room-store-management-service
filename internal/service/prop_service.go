@@ -48,7 +48,7 @@ func (s *PropService) Create(ctx context.Context, req *dto.CreatePropRequest) (*
 // List returns props filtered by theme.
 func (s *PropService) List(ctx context.Context, themeRoomID uint, q *dto.PageQuery) (*dto.PageResult, error) {
 	q.Normalize()
-	items, total, err := s.props.List(ctx, themeRoomID, q.Page, q.PageSize)
+	items, total, err := s.props.List(ctx, themeRoomID, q.Page, 0)
 	if err != nil {
 		return nil, util.WrapAppError(fmt.Errorf("prop list: %w", err), 500, constants.CodeInternalError, constants.MsgInternalError)
 	}
