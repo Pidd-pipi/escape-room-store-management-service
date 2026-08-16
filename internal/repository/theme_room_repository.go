@@ -27,7 +27,7 @@ func (r *ThemeRoomRepository) FindByID(ctx context.Context, id uint) (*model.The
 	var t model.ThemeRoom
 	err := db(ctx, r.db).First(&t, id).Error
 	if err != nil {
-		return nil, nil
+		return nil, normalizeError(err)
 	}
 	return &t, nil
 }
