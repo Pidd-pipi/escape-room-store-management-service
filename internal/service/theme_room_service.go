@@ -32,9 +32,6 @@ func NewThemeRoomService(themes ThemeRoomRepository, logger *slog.Logger) *Theme
 
 // Create adds a new theme room.
 func (s *ThemeRoomService) Create(ctx context.Context, req *dto.CreateThemeRoomRequest) (*model.ThemeRoom, error) {
-	if !constants.IsThemeCategory(req.Category) {
-		return nil, util.NewAppError(400, constants.CodeValidation, "主题分类不合法", nil)
-	}
 	t := &model.ThemeRoom{
 		Name: req.Name, Category: req.Category, DifficultyStars: req.DifficultyStars,
 		MinPlayers: req.MinPlayers, MaxPlayers: req.MaxPlayers, DurationMinutes: req.DurationMinutes,
