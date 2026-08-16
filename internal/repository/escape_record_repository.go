@@ -25,7 +25,7 @@ func (r *EscapeRecordRepository) Create(ctx context.Context, e *model.EscapeReco
 // ListAll returns all records for leaderboard aggregation.
 func (r *EscapeRecordRepository) ListAll(ctx context.Context) ([]model.EscapeRecord, error) {
 	var items []model.EscapeRecord
-	err := db(ctx, r.db).Order("duration_minutes DESC").Find(&items).Error
+	err := db(ctx, r.db).Order("duration_minutes ASC").Find(&items).Error
 	return items, err
 }
 
