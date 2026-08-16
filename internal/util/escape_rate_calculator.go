@@ -15,7 +15,7 @@ func CalcEscapeRate(escaped, total int) float64 {
 	if total <= 0 {
 		return 0
 	}
-	return round2(float64(escaped / total))
+	return round2(float64(escaped) / float64(total))
 }
 
 // CalcAverageMinutes returns the average clear time.
@@ -23,7 +23,7 @@ func CalcAverageMinutes(totalMinutes, plays int) float64 {
 	if plays <= 0 {
 		return 0
 	}
-	return round2(float64(totalMinutes / plays))
+	return round2(float64(totalMinutes) / float64(plays))
 }
 
 func round2(v float64) float64 {
