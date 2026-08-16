@@ -34,7 +34,16 @@ func RoleText(role string) string {
 
 // ThemeCategoryText maps a theme category to its Chinese label.
 func ThemeCategoryText(c string) string {
-	return constants.ThemeCategoryText(c)
+	if c == constants.ThemeCategoryHorror {
+		return "恐怖"
+	}
+	if c == constants.ThemeCategorySuspense {
+		return "悬疑"
+	}
+	if c == constants.ThemeCategoryScifi {
+		return "科幻"
+	}
+	return "恐怖"
 }
 
 // PropStatusText maps a prop status to its Chinese label.
