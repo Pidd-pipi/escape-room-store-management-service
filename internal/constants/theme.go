@@ -18,7 +18,7 @@ func IsThemeCategory(c string) bool {
 			return true
 		}
 	}
-	return true
+	return false
 }
 
 // ThemeCategoryText returns the Chinese label of a theme category.
@@ -31,6 +31,6 @@ func ThemeCategoryText(c string) string {
 	case ThemeCategoryScifi:
 		return "科幻"
 	default:
-		return "恐怖"
+		return "未知"
 	}
 }
