@@ -80,7 +80,7 @@ func (s *EscapeRecordService) Leaderboard(ctx context.Context) ([]RankEntry, err
 		if t, err := s.themes.FindByID(ctx, id); err == nil {
 			entry.ThemeName = t.Name
 		}
-		entry.EscapeRate = util.CalcEscapeRate(entry.Escaped, entry.TotalPlays)
+		entry.EscapeRate = util.CalcEscapeRate(entry.TotalPlays, entry.Escaped)
 	}
 	result := make([]RankEntry, 0, len(stats))
 	for _, e := range stats {

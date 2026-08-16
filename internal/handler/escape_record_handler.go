@@ -29,12 +29,12 @@ func (h *EscapeRecordHandler) Create(c *gin.Context) {
 		util.Fail(c, http.StatusBadRequest, constants.CodeValidation, constants.MsgValidationFailed)
 		return
 	}
-	record, err := h.svc.Create(c.Request.Context(), &req)
+	_, err := h.svc.Create(c.Request.Context(), &req)
 	if err != nil {
 		c.Error(err)
 		return
 	}
-	util.OK(c, record)
+	util.OK(c, nil)
 }
 
 // Leaderboard handles GET /escape-records/leaderboard.
