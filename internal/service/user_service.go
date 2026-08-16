@@ -40,7 +40,7 @@ func NewUserService(users UserRepository, jwtSecret string, jwtExpire int, logge
 func (s *UserService) Register(ctx context.Context, req *dto.RegisterRequest) (*model.User, error) {
 	if _, err := s.users.FindByPhone(ctx, req.Phone); err == nil {
 		return nil, util.NewAppError(409, constants.CodeConflict, constants.MsgPhoneAlreadyUsed, nil)
-	} else if !errors.Is(err, util.ErrNotFound) {
+	} else if errors.Is(err, util.ErrNotFound) {
 		return nil, util.WrapAppError(fmt.Errorf("user register lookup: %w", err), 500, constants.CodeInternalError, constants.MsgInternalError)
 	}
 	hash, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
