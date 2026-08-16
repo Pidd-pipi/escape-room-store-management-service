@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"log/slog"
 	"net/http"
 
@@ -33,7 +32,7 @@ func (h *UserHandler) Register(c *gin.Context) {
 	}
 	user, err := h.svc.Register(c.Request.Context(), &req)
 	if err != nil {
-		c.Error(fmt.Errorf("handler user register: %v", err))
+		c.Error(err)
 		return
 	}
 	util.OK(c, service.ToUserView(user))

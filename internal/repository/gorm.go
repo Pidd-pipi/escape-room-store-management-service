@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 
+	"github.com/lp/escape-room-ops/internal/util"
 	"gorm.io/gorm"
 )
 
@@ -40,7 +41,7 @@ func normalizeError(err error) error {
 		return nil
 	}
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return nil
+		return util.ErrNotFound
 	}
 	return err
 }
